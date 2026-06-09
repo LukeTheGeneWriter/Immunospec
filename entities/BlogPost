@@ -1,0 +1,60 @@
+{
+  "name": "BlogPost",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title of the blog post"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-friendly slug"
+    },
+    "excerpt": {
+      "type": "string",
+      "description": "Short summary of the post"
+    },
+    "content": {
+      "type": "string",
+      "description": "Full markdown content of the blog post"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "news",
+        "research"
+      ],
+      "default": "research",
+      "description": "Whether this is a news item or a research/science post"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "clinical_trials",
+        "patient_impact",
+        "molecular_engineering",
+        "company_news",
+        "research"
+      ],
+      "description": "Category of the post"
+    },
+    "cover_image": {
+      "type": "string",
+      "description": "URL for the cover image"
+    },
+    "author": {
+      "type": "string",
+      "description": "Author name"
+    },
+    "published": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the post is published"
+    }
+  },
+  "required": [
+    "title",
+    "content",
+    "category"
+  ]
+}
