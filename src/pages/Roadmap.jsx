@@ -1,0 +1,151 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import PhaseCard from '../components/roadmap/PhaseCard';
+
+const ROADMAP_IMAGE = "https://media.base44.com/images/public/69f758fd49752596d71c7ef0/55e84a996_generated_049abe54.png";
+
+const phases = [
+{
+  name: 'Computational Design',
+  timeline: '2024 – 2025',
+  status: 'complete',
+  description: 'In silico identification and design of candidate reverse vaccine antigens using structural biology and machine learning.',
+  milestones: [
+  'Mapped self-antigen targets implicated in Type 1 Diabetes',
+  'Ran molecular dynamics simulations on tolerogenic antigen candidates',
+  'Identified lead delivery scaffold via computational docking',
+  'Filed provisional patent on core antigen design',
+  'Selected top candidates for wet-lab validation']
+
+},
+{
+  name: 'Preclinical Validation',
+  timeline: '2025 – 2027',
+  status: 'active',
+  description: 'Wet-lab and ex vivo human blood studies confirming tolerogenic efficacy — a higher-fidelity gold standard than animal models.',
+  milestones: [
+  'Synthesize and characterize lead antigen candidates',
+  'Dendritic cell tolerogenicity assays in vitro',
+  'T-regulatory cell induction in primary human PBMC cultures',
+  'Ex vivo whole-blood and immune cell assays using patient samples',
+  'Optimize delivery nanoparticle formulation and select lead candidate(s)']
+
+},
+{
+  name: 'Phase I — Safety & Dosing',
+  timeline: '2028 – 2030',
+  status: 'upcoming',
+  description: 'First-in-human trials establishing safety, tolerability, and optimal dosing in patients with early-stage autoimmune disease.',
+  milestones: [
+  'IND submission to FDA',
+  'Enrollment of 30 patients across 3 dose cohorts',
+  'Primary endpoint: safety and tolerability over 12 weeks',
+  'Biomarker analysis for tolerance induction signals',
+  'Interim data readout']
+
+},
+{
+  name: 'Phase II — Efficacy Signal',
+  timeline: '2030 – 2032',
+  status: 'upcoming',
+  description: 'Randomized, controlled trial in ~200 patients to establish preliminary efficacy and refine the therapeutic approach.',
+  milestones: [
+  'Multi-site enrollment across 15 clinical centers',
+  'Primary endpoint: reduction in autoimmune biomarkers',
+  'Secondary endpoints: clinical symptom improvement',
+  'Dose-response optimization',
+  'Exploratory analysis across additional indications']
+
+},
+{
+  name: 'Phase III — Pivotal Trial',
+  timeline: '2032 – 2035',
+  status: 'upcoming',
+  description: 'Large-scale, multi-center pivotal trial to confirm safety and efficacy for regulatory approval.',
+  milestones: [
+  'Enrollment of 1,000+ patients globally',
+  'Primary endpoint: durable disease remission',
+  'Long-term safety monitoring (2+ years)',
+  'Regulatory submissions to FDA, EMA, and PMDA',
+  'Health economics and outcomes research (HEOR)']
+
+},
+{
+  name: 'Commercialization',
+  timeline: '2036+',
+  status: 'upcoming',
+  description: 'Market launch and expansion of the tolerance induction platform across multiple autoimmune indications.',
+  milestones: [
+  'Regulatory approval and market authorization',
+  'Manufacturing scale-up to meet global demand',
+  'Launch partnerships with major health systems',
+  'Expansion to additional autoimmune conditions',
+  'Post-market surveillance and real-world evidence']
+
+}];
+
+
+export default function Roadmap() {
+  return (
+    <div className="pt-20">
+      {/* Hero */}
+      <section className="relative py-24 sm:py-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={ROADMAP_IMAGE} alt="Abstract silver fibers weaving through geometric glass shapes" className="w-full h-full object-cover opacity-25" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/90 to-background" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}>
+            
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-6 block">Clinical Trajectory</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6 max-w-2xl">
+              The path to
+              <span className="text-primary"> patients</span>
+            </h1>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">To achieve our goal, these are the challenges that Immunospec must overcome. It starts with an idea, rooted in the literature and validated by genomics. It is then tested in human cells. Finally, if all goes well, the final challenge awaits; clinical trials. Clinical trials take years, and they yield important data on the safety and efficacy of Immunospec. These lessons inform the scale-up strategy and commercial rollout.
+
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Timeline */}
+      <section className="py-16 relative">
+        <div className="max-w-5xl mx-auto px-6 md:px-12">
+          <div className="relative">
+            {/* Vertical line */}
+            <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/80 via-primary/25 to-transparent" />
+
+            <div className="space-y-4">
+              {phases.map((phase, i) =>
+              <div key={i} className="relative pl-16">
+                  {/* Node on the line */}
+                  <div className={`absolute left-5 top-8 -translate-x-1/2 flex items-center justify-center rounded-full transition-all duration-300 ${
+                phase.status === 'complete' ?
+                'w-7 h-7 bg-primary shadow-lg shadow-primary/40' :
+                phase.status === 'active' ?
+                'w-7 h-7 bg-background border-2 border-primary shadow-lg shadow-primary/30' :
+                'w-5 h-5 bg-background border-2 border-border/60'}`
+                }>
+                    {phase.status === 'complete' &&
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 6l3 3 5-5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                  }
+                    {phase.status === 'active' &&
+                  <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
+                  }
+                  </div>
+                  <PhaseCard phase={phase} index={i} />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>);
+
+}
