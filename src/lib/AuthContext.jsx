@@ -19,10 +19,19 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const checkAppState = async () => {
+    // If no appId is configured, skip API checks entirely (static deployment mode)
+    if (!appParams.appId) {
+      console.info('No Base44 appId configured - running in static mode');
+      setIsLoadingPublicSettings(false);
+      setIsLoadingAuth(false);
+      setAuthChecked(true);
+      return;
+    }
+
     try {
       setIsLoadingPublicSettings(true);
       setAuthError(null);
-      
+
       // First, check app public settings (with token if available)
       // This will tell us if auth is required, user not registered, etc.
       const appClient = createAxiosClient({
@@ -33,11 +42,11 @@ export const AuthProvider = ({ children }) => {
         token: appParams.token, // Include token if available
         interceptResponses: true
       });
-      
+
       try {
         const publicSettings = await appClient.get(`/prod/public-settings/by-id/${appParams.appId}`);
         setAppPublicSettings(publicSettings);
-        
+
         // If we got the app public settings successfully, check if user is authenticated
         if (appParams.token) {
           await checkUserAuth();
@@ -49,7 +58,7 @@ export const AuthProvider = ({ children }) => {
         setIsLoadingPublicSettings(false);
       } catch (appError) {
         console.error('App state check failed:', appError);
-        
+
         // Handle app-level errors
         if (appError.status === 403 && appError.data?.extra_data?.reason) {
           const reason = appError.data.extra_data.reason;
@@ -70,6 +79,8 @@ export const AuthProvider = ({ children }) => {
             });
           }
         } else {
+          // For network errors or missing backend, set error but don't block
+          // The app will continue in degraded mode
           setAuthError({
             type: 'unknown',
             message: appError.message || 'Failed to load app'
@@ -77,6 +88,7 @@ export const AuthProvider = ({ children }) => {
         }
         setIsLoadingPublicSettings(false);
         setIsLoadingAuth(false);
+        setAuthChecked(true);
       }
     } catch (error) {
       console.error('Unexpected error:', error);
@@ -86,6 +98,7 @@ export const AuthProvider = ({ children }) => {
       });
       setIsLoadingPublicSettings(false);
       setIsLoadingAuth(false);
+      setAuthChecked(true);
     }
   };
 

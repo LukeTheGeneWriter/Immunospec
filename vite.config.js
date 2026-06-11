@@ -7,7 +7,7 @@ export default defineConfig({
   base: './', //Impfix
   build: {
     outDir: 'dist', //impfix github pages
-    assestsDir: 'assets', //maybe needs to be componenets
+    assetsDir: 'assets',
   },
   logLevel: 'error', // Suppress warnings, only show errors
   plugins: [

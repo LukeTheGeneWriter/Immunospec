@@ -1,0 +1,16 @@
+{
+  "name": "Immunospec",
+  "short_name": "Immunospec",
+  "description": "Your immunity, back on your side. Autoimmune disease treatment through inverse vaccinology.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#1F0F3D",
+  "theme_color": "#C9B2E6",
+  "icons": [
+    {
+      "src": "https://media.base44.com/images/public/69f758fd49752596d71c7ef0/01aa6c29f_Immunospec_noback_logo_2025.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

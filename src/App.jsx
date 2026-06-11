@@ -17,16 +17,7 @@ import ComingSoon from './pages/ComingSoon';
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
 
-  // Show loading spinner while checking app public settings or auth
-  if (isLoadingPublicSettings || isLoadingAuth) {
-    return (
-      <div className="fixed inset-0 flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-slate-200 border-t-slate-800 rounded-full animate-spin"></div>
-      </div>
-    );
-  }
-
-  // Handle authentication errors
+  // Handle specific authentication errors that require user action
   if (authError) {
     if (authError.type === 'user_not_registered') {
       return <UserNotRegisteredError />;
@@ -35,9 +26,11 @@ const AuthenticatedApp = () => {
       navigateToLogin();
       return null;
     }
+    // For 'unknown' errors (e.g., network issues, no backend),
+    // continue rendering the app - it will work in degraded mode
   }
 
-  // Render the main app
+  // Render the main app (don't block on loading states for public site)
   return (
     <Routes>
       <Route element={<SiteLayout />}>
