@@ -1,11 +1,11 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { base44 } from '@/api/base44Client';
 import { useQuery } from '@tanstack/react-query';
 import ReactMarkdown from 'react-markdown';
-import { ArrowLeft, Loader2 } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { format } from 'date-fns';
+import { getPostById } from '@/data/blogPosts';
 
 const categoryLabels = {
   clinical_trials: 'Clinical Trials',
@@ -18,21 +18,12 @@ const categoryLabels = {
 export default function BlogPost() {
   const { id } = useParams();
 
-  const { data: post, isLoading } = useQuery({
+  // Use static blog posts data
+  const { data: post } = useQuery({
     queryKey: ['blogPost', id],
-    queryFn: async () => {
-      const posts = await base44.entities.BlogPost.filter({ id });
-      return posts[0] || null;
-    },
+    queryFn: () => getPostById(id),
+    initialData: () => getPostById(id),
   });
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center pt-20">
-        <Loader2 className="w-6 h-6 animate-spin text-primary" />
-      </div>
-    );
-  }
 
   if (!post) {
     return (

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { base44 } from '@/api/base44Client';
 import { useQuery } from '@tanstack/react-query';
 import PostListItem from '../components/blog/PostListItem';
-import { Loader2, Newspaper, FlaskConical } from 'lucide-react';
+import { Newspaper, FlaskConical } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { getPublishedPosts } from '@/data/blogPosts';
 
 const tabs = [
   { key: 'news', label: 'News', icon: Newspaper, description: 'Company updates, press coverage, and milestones.' },
@@ -14,10 +14,11 @@ const tabs = [
 export default function Blog() {
   const [activeTab, setActiveTab] = useState('news');
 
-  const { data: posts = [], isLoading } = useQuery({
+  // Use static blog posts data
+  const { data: posts = [] } = useQuery({
     queryKey: ['blogPosts'],
-    queryFn: () => base44.entities.BlogPost.filter({ published: true }, '-created_date'),
-    initialData: [],
+    queryFn: () => getPublishedPosts(),
+    initialData: getPublishedPosts(),
   });
 
   const filtered = posts.filter(p => (p.type || 'research') === activeTab);
@@ -78,11 +79,7 @@ export default function Blog() {
           <div className="border-t border-border/40 mb-2" />
 
           {/* Posts */}
-          {isLoading ? (
-            <div className="flex justify-center py-20">
-              <Loader2 className="w-6 h-6 animate-spin text-primary" />
-            </div>
-          ) : filtered.length === 0 ? (
+          {filtered.length === 0 ? (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
