@@ -22,9 +22,11 @@ Patients deserve an option that is: long-lasting, highly precise, and disease-sp
 
 We're currently in the early stages of research and development. Follow our blog for updates on:
 
+
 - Research progress
 - Clinical trial plans
 - Patient stories
 - Investment opportunities
+
 
 Thank you for joining us on this journey. Together, we can put your immunity back on your side.
