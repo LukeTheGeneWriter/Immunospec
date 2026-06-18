@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { toast } from 'sonner';
 import { ArrowRight, Mail } from 'lucide-react';
 const SUPPORT_IMAGE = "https://media.base44.com/images/public/69f758fd49752596d71c7ef0/22b0af9ca_generated_bc1e8a1f.png";
 
@@ -39,23 +36,6 @@ const tiers = [
 ];
 
 export default function Support() {
-  const [form, setForm] = useState({ name: '', email: '', organization: '', message: '' });
-  const [submitting, setSubmitting] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!form.name || !form.email) {
-      toast.error('Please fill in your name and email.');
-      return;
-    }
-    setSubmitting(true);
-    // Simulate submission
-    await new Promise(r => setTimeout(r, 1500));
-    toast.success('Thank you for your interest! Our team will be in touch soon.');
-    setForm({ name: '', email: '', organization: '', message: '' });
-    setSubmitting(false);
-  };
-
   return (
     <div className="pt-20">
       {/* Hero */}
@@ -78,7 +58,7 @@ export default function Support() {
               <span className="text-primary"> you need</span>
             </h1>
             <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed mb-6">
-              Immunospec is raising funds under <strong className="text-foreground">Regulation Crowdfunding (Reg CF)</strong>, opening early-stage investment to the patients, families, and allies who believe autoimmune disease deserves a real answer.
+              Immunospec is raising funds under <strong className="text-foreground">Regulation Crowdfunding (Reg CF)</strong>, opening early-stage investment to the patients, families, and allies [...]
             </p>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5">
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
@@ -160,7 +140,7 @@ export default function Support() {
             </div>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Contact Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -179,45 +159,23 @@ export default function Support() {
                 </div>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <Input
-                    placeholder="Full Name"
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="bg-background/50 border-border/50 focus:border-primary/50 text-sm"
-                  />
-                  <Input
-                    placeholder="Email"
-                    type="email"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="bg-background/50 border-border/50 focus:border-primary/50 text-sm"
-                  />
+              <div className="space-y-4">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Interested in investing, partnering with Immunospec, or have questions about our mission? We'd love to hear from you.
+                </p>
+                <div className="flex items-center gap-3 p-4 rounded-lg bg-primary/5 border border-primary/20">
+                  <Mail size={16} className="text-primary flex-shrink-0" />
+                  <a 
+                    href="mailto:luke@immunospec.com" 
+                    className="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                  >
+                    luke@immunospec.com
+                  </a>
                 </div>
-                <Input
-                  placeholder="Organization (optional)"
-                  value={form.organization}
-                  onChange={(e) => setForm({ ...form, organization: e.target.value })}
-                  className="bg-background/50 border-border/50 focus:border-primary/50 text-sm"
-                />
-                <Textarea
-                  placeholder="Tell us about your interest in supporting Immunospec..."
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  rows={4}
-                  className="bg-background/50 border-border/50 focus:border-primary/50 text-sm resize-none"
-                />
-
-                <Button
-                  type="submit"
-                  disabled={submitting}
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full h-12 text-sm font-medium"
-                >
-                  {submitting ? 'Sending...' : 'Submit Inquiry'}
-                  {!submitting && <ArrowRight size={16} className="ml-2" />}
-                </Button>
-              </form>
+                <p className="text-xs text-muted-foreground/70">
+                  Send us an email with your name, organization, and inquiry. We aim to respond within 2 business days.
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>
