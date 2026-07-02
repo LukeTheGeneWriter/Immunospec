@@ -105,7 +105,7 @@ export default function Roadmap() {
               The path to
               <span className="text-primary"> patients</span>
             </h1>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">To achieve our goal, these are the challenges that Immunospec must overcome. It starts with an idea, rooted in the literature and validated by genomics. It is then tested in human cells. Finally, if all goes well, the final challenge awaits; clinical trials. Clinical trials take years, and they yield important data on the safety and efficacy of Immunospec. These lessons inform the scale-up strategy and commercial rollout.
+            <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">To deliver a practical solution to people living with autoimmune disease, Immunospec must overcome these challenges. Here, you can track every milestone from the lab to the clinic.
 
             </p>
           </motion.div>
