@@ -9,38 +9,38 @@ const phases = [
   name: 'Computational Design',
   timeline: '2024 – 2025',
   status: 'complete',
-  description: 'In silico identification and design of candidate reverse vaccine antigens using structural biology and machine learning.',
+  description: 'In silico analysis of autoimmune diseases to create disease-specific reverse vaccine candidates.',
   milestones: [
-  'Mapped self-antigen targets implicated in Type 1 Diabetes',
-  'Ran molecular dynamics simulations on tolerogenic antigen candidates',
-  'Identified lead delivery scaffold via computational docking',
-  'Filed provisional patent on core antigen design',
-  'Selected top candidates for wet-lab validation']
+  'Completed bioinformatic pipeline that generates therapeutic proteins',
+  'Identified short list of candidate proteins for all classical autoimmune diseases',
+  'Enhanced existing workflow to reverse-translate proteins into mRNA',
+  'Designed proof-of-concept laboratory and identified validation methods',
+  'Mapped out equipment, personnel, and investment needs for wet-lab validation']
 
 },
 {
   name: 'Preclinical Validation',
   timeline: '2025 – 2027',
   status: 'active',
-  description: 'Wet-lab and ex vivo human blood studies confirming tolerogenic efficacy — a higher-fidelity gold standard than animal models.',
+  description: 'Analysis of reverse vaccine activity in blood provides more applicable data than lab animals.',
   milestones: [
-  'Synthesize and characterize lead antigen candidates',
-  'Dendritic cell tolerogenicity assays in vitro',
-  'T-regulatory cell induction in primary human PBMC cultures',
-  'Ex vivo whole-blood and immune cell assays using patient samples',
-  'Optimize delivery nanoparticle formulation and select lead candidate(s)']
+  'Synthesize and characterize lead reverse vaccine candidates',
+  'Generate real human data by observing blood ex-vivo',
+  'Measure T-regulatory cell induction and characterize cells',
+  'Measure antigen-specific T-effector cell deletion',
+  'Optimize carrier particle formulation for safety, precision, and scalability']
 
 },
 {
   name: 'Phase I — Safety & Dosing',
   timeline: '2028 – 2030',
   status: 'upcoming',
-  description: 'First-in-human trials establishing safety, tolerability, and optimal dosing in patients with early-stage autoimmune disease.',
+  description: 'First-in-human trials to establish tolerability and dosing in humans.',
   milestones: [
   'IND submission to FDA',
-  'Enrollment of 30 patients across 3 dose cohorts',
+  'Enrollment of first trial participants in multiple dose cohorts',
   'Primary endpoint: safety and tolerability over 12 weeks',
-  'Biomarker analysis for tolerance induction signals',
+  'Immunologic analysis for tolerance induction signals',
   'Interim data readout']
 
 },
@@ -48,23 +48,23 @@ const phases = [
   name: 'Phase II — Efficacy Signal',
   timeline: '2030 – 2032',
   status: 'upcoming',
-  description: 'Randomized, controlled trial in ~200 patients to establish preliminary efficacy and refine the therapeutic approach.',
+  description: 'Larger trial explicitly measures efficacy and refines the therapeutic approach.',
   milestones: [
-  'Multi-site enrollment across 15 clinical centers',
-  'Primary endpoint: reduction in autoimmune biomarkers',
-  'Secondary endpoints: clinical symptom improvement',
+  'Larger trial with explicit efficacy measurements across more centers',
+  'Primary endpoint: measurable antigen-specific tolerance',
+  'Secondary endpoints: amelioration/reversal of autoimmune disease, or prevention',
   'Dose-response optimization',
-  'Exploratory analysis across additional indications']
+  'Higher-resolution data readout']
 
 },
 {
   name: 'Phase III — Pivotal Trial',
   timeline: '2032 – 2035',
   status: 'upcoming',
-  description: 'Large-scale, multi-center pivotal trial to confirm safety and efficacy for regulatory approval.',
+  description: 'Large-scale, multi-center pivotal trial seeking regulatory approval.',
   milestones: [
-  'Enrollment of 1,000+ patients globally',
-  'Primary endpoint: durable disease remission',
+  'Much larger trial across multiple populations',
+  'Primary endpoint: preventing or reversing autoimmune disease on a global scale',
   'Long-term safety monitoring (2+ years)',
   'Regulatory submissions to FDA, EMA, and PMDA',
   'Health economics and outcomes research (HEOR)']
@@ -76,11 +76,11 @@ const phases = [
   status: 'upcoming',
   description: 'Market launch and expansion of the tolerance induction platform across multiple autoimmune indications.',
   milestones: [
-  'Regulatory approval and market authorization',
+  'Regulatory approval and market authorization for lead candidate',
   'Manufacturing scale-up to meet global demand',
-  'Launch partnerships with major health systems',
-  'Expansion to additional autoimmune conditions',
-  'Post-market surveillance and real-world evidence']
+  'Strategic partnerships with major health systems',
+  'Partner with patient groups to expand to more autoimmune conditions',
+  'Post-market surveillance for real-world optimizations']
 
 }];
 
