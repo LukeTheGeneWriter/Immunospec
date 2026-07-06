@@ -1,11 +1,11 @@
 ---
-title: "Solutions for autoimmune disease"
-type: news
+title: "The history of solutions for autoimmune disease"
+type: research
 category: company_news
 author: Immunospec Team
-date: 2026-01-21T10:00:00Z
-published: false
-excerpt: The immune system can learn. Don't medicate, re-educate.
+date: 2026-07-05T10:00:00Z
+published: true
+excerpt: Modern medicine has provided many good treatments, but we still don't have a true solution
 ---
 
 Autoimmune disease is when your immune system mistakenly attacks self tissue. Modern medicine has provided many good treatments, but we still don't have a true solution that addresses the root cause of disease. Here, we'll talk about the history of autoimmune disease therapies that have led Immunospec to take the next step and provide a true solution to patients.
